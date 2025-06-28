@@ -90,13 +90,27 @@ export const GeneralContact: React.FC = () => {
                 Ready to transform your Pinterest marketing? Click below to get started with your free consultation and Pinterest audit.
               </p>
               
-              <button
-                onClick={handleContactClick}
-                className="bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-8 rounded-full font-semibold hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center mx-auto group"
-              >
-                Contact Us Now
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={handleContactClick}
+                  className="bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-6 rounded-full font-semibold hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center group"
+                >
+                  <Mail className="w-5 h-5 mr-2" />
+                  Email Us
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                </button>
+                
+                <a
+                  href="https://wa.me/18005557468?text=Hi! I'd like to start my Pinterest marketing journey. Can you help me get started?"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center group"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Chat on WhatsApp
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                </a>
+              </div>
               
               <div className="mt-6 p-4 bg-red-50 rounded-xl">
                 <h4 className="font-semibold text-gray-900 mb-2">Free Pinterest Audit Included</h4>
