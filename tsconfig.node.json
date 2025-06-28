@@ -5,12 +5,15 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
+    /* Bundler and Node.js mode */
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,
+    "outDir": "dist/api",
+    "rootDir": "api",
+    "types": ["@vercel/node"],
 
     /* Linting */
     "strict": true,
@@ -18,5 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "api/**/*"],
+  "exclude": ["node_modules"]
 }
