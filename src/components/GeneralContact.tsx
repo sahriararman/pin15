@@ -135,14 +135,14 @@ export const GeneralContact: React.FC = () => {
               href="https://wa.me/18005557468?text=Hi! I'm interested in Pinterest marketing services. Can you help me get started?"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-red-600 py-3 px-6 rounded-full font-semibold hover:bg-red-50 transition-colors duration-200 flex items-center justify-center"
+              className="bg-green-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-green-600 transition-colors duration-200 flex items-center justify-center"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               Chat on WhatsApp
             </a>
             <button
               onClick={handleContactClick}
-              className="bg-red-800 text-white py-3 px-6 rounded-full font-semibold hover:bg-red-900 transition-colors duration-200 flex items-center justify-center"
+              className="bg-white text-red-600 py-3 px-6 rounded-full font-semibold hover:bg-red-50 transition-colors duration-200 flex items-center justify-center"
             >
               <Mail className="w-5 h-5 mr-2" />
               Send Email
