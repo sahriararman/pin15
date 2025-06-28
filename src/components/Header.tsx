@@ -107,7 +107,7 @@ export const Header: React.FC<HeaderProps> = ({ locations, selectedLocation, onL
                       {locations.map((loc) => (
                         <Link
                           key={loc.id}
-                          to={`/location/${loc.id}`}
+                          to={`/${loc.id}`}
                           onClick={() => {
                             onLocationChange(loc);
                             setIsLocationDropdownOpen(false);
