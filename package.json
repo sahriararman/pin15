@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-sitemap && tsc --project tsconfig.node.json && vite build",
+    "build": "vite build",
+    "build:full": "npm run generate-sitemap && tsc --project tsconfig.node.json && vite build",
     "compile-sitemap": "tsc scripts/generate-sitemap.ts --outDir temp-sitemap-build --rootDir scripts --target ES2020 --module ESNext --moduleResolution node --esModuleInterop --allowSyntheticDefaultImports",
     "generate-sitemap": "npm run compile-sitemap && node temp-sitemap-build/generate-sitemap.js && rm -rf temp-sitemap-build",
     "lint": "eslint .",
