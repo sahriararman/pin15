@@ -21,7 +21,7 @@ export const LocationsOverview: React.FC = () => {
           {locations.map((location) => (
             <Link
               key={location.id}
-              to={`/location/${location.id}`}
+              to={`/${location.id}`}
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105 group block"
             >
               <div className="flex items-center mb-6">
