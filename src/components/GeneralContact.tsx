@@ -1,74 +1,10 @@
-import React, { useState } from 'react';
-import { Phone, Mail, Clock, Send, MapPin } from 'lucide-react';
+import React from 'react';
+import { Phone, Mail, Clock, MapPin, ArrowRight } from 'lucide-react';
 
 export const GeneralContact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
-    honeypot: '' // Hidden field for spam protection
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Check honeypot field - if filled, it's likely a bot
-    if (formData.honeypot) {
-      console.log('Potential spam detected - honeypot field was filled');
-      return; // Don't process the form
-    }
-    
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          message: formData.message,
-          honeypot: formData.honeypot
-        }),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          message: '',
-          honeypot: ''
-        });
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleContactClick = () => {
+    // You can customize this action - email, phone, or external form
+    window.location.href = 'mailto:hello@pinterestmarketing.pro?subject=Pinterest Marketing Inquiry';
   };
 
   return (
@@ -84,135 +20,9 @@ export const GeneralContact: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Form Section - Now First on Mobile */}
-          <div className="order-1 lg:order-2">
-            <form onSubmit={handleSubmit} className="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
-              
-              {/* Success/Error Messages */}
-              {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">Thank you! Your message has been sent successfully. We'll get back to you within 2 hours.</p>
-                </div>
-              )}
-              
-              {submitStatus === 'error' && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                  <p className="text-red-800">Sorry, there was an error sending your message. Please try again or contact us directly.</p>
-                </div>
-              )}
-              
-              {/* Honeypot field - hidden from users */}
-              <input
-                type="text"
-                name="honeypot"
-                value={formData.honeypot}
-                onChange={handleChange}
-                style={{ display: 'none' }}
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-              />
-              
-              <div className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="Your full name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="(555) 123-4567"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="Your company name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                    placeholder="Tell us about your Pinterest marketing goals..."
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-6 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                >
-                  <Send className="w-5 h-5 mr-2" />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {/* Contact Info Section - Now Second on Mobile */}
-          <div className="order-2 lg:order-1">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Contact Info Section */}
+          <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8">Get in Touch</h3>
             
             <div className="space-y-6">
@@ -263,13 +73,64 @@ export const GeneralContact: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="mt-8 p-6 bg-red-50 rounded-xl">
-              <h4 className="font-semibold text-gray-900 mb-2">Free Pinterest Audit</h4>
-              <p className="text-gray-600 text-sm">
-                Get a comprehensive analysis of your current Pinterest performance and actionable recommendations for improvement.
+          {/* CTA Section */}
+          <div className="bg-white p-8 rounded-2xl shadow-xl">
+            <div className="text-center">
+              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Mail className="w-8 h-8 text-red-600" />
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Let's Start Your Pinterest Journey
+              </h3>
+              
+              <p className="text-gray-600 mb-8">
+                Ready to transform your Pinterest marketing? Click below to get started with your free consultation and Pinterest audit.
               </p>
+              
+              <button
+                onClick={handleContactClick}
+                className="bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-8 rounded-full font-semibold hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center mx-auto group"
+              >
+                Contact Us Now
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              </button>
+              
+              <div className="mt-6 p-4 bg-red-50 rounded-xl">
+                <h4 className="font-semibold text-gray-900 mb-2">Free Pinterest Audit Included</h4>
+                <p className="text-gray-600 text-sm">
+                  Get a comprehensive analysis of your current Pinterest performance and actionable recommendations for improvement.
+                </p>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA Strip */}
+        <div className="mt-16 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-center text-white">
+          <h3 className="text-2xl font-bold mb-2">
+            Questions? We're Here to Help!
+          </h3>
+          <p className="text-red-100 mb-6">
+            Our Pinterest marketing experts are standing by to discuss your goals and create a custom strategy for your business.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:8005557468"
+              className="bg-white text-red-600 py-3 px-6 rounded-full font-semibold hover:bg-red-50 transition-colors duration-200 flex items-center justify-center"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Call Now
+            </a>
+            <button
+              onClick={handleContactClick}
+              className="bg-red-800 text-white py-3 px-6 rounded-full font-semibold hover:bg-red-900 transition-colors duration-200 flex items-center justify-center"
+            >
+              <Mail className="w-5 h-5 mr-2" />
+              Send Email
+            </button>
           </div>
         </div>
       </div>
