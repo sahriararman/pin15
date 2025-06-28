@@ -114,7 +114,7 @@ function generateSitemap() {
   locationsData.forEach(location => {
     sitemap += `
   <url>
-    <loc>${BASE_URL}/location/${location.id}</loc>
+    <loc>${BASE_URL}/${location.id}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
