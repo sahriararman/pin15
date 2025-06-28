@@ -8,26 +8,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const { name, email, phone, company, message, honeypot } = req.body;
 
-  // Check honeypot for spam protection
   if (honeypot) {
     return res.status(400).json({ message: 'Potential spam detected' });
   }
 
-  // Create a unique ID for email threading
   const messageId = `<${Date.now()}.${email}@hello.pinclimb.com>`;
 
-  // Set up Nodemailer with Hostinger’s SMTP
   const transporter = nodemailer.createTransport({
     host: 'smtp.hostinger.com',
     port: 465,
     secure: true,
     auth: {
-      user: process.env.EMAIL_USER, // contact@hello.pinclimb.com
+      user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
   });
 
-  // Define email details
   const mailOptions = {
     from: '"Pinclimb Contact" <contact@hello.pinclimb.com>',
     to: 'contact@hello.pinclimb.com',
