@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, Clock, MapPin, ArrowRight } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
 
 export const GeneralContact: React.FC = () => {
   const handleContactClick = () => {
@@ -118,11 +118,13 @@ export const GeneralContact: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:8005557468"
+              href="https://wa.me/18005557468?text=Hi! I'm interested in Pinterest marketing services. Can you help me get started?"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-red-600 py-3 px-6 rounded-full font-semibold hover:bg-red-50 transition-colors duration-200 flex items-center justify-center"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Chat on WhatsApp
             </a>
             <button
               onClick={handleContactClick}
