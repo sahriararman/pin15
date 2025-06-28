@@ -1,9 +1,9 @@
-json{
-  "routes": [
+{
+  "buildCommand": "npm run build",
+  "rewrites": [
     {
-      "src": "/[^.]+",
-      "dest": "/",
-      "status": 200
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
   ]
 }
