@@ -10,6 +10,54 @@ export const GeneralContact: React.FC = () => {
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Mobile-First CTA Section */}
+        <div className="lg:hidden mb-16">
+          <div className="bg-white p-8 rounded-2xl shadow-xl">
+            <div className="text-center">
+              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Mail className="w-8 h-8 text-red-600" />
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Let's Start Your Pinterest Journey
+              </h3>
+              
+              <p className="text-gray-600 mb-8">
+                Ready to transform your Pinterest marketing? Click below to get started with your free consultation and Pinterest audit.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={handleContactClick}
+                  className="bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-6 rounded-full font-semibold hover:from-red-700 hover:to-red-800 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center group"
+                >
+                  <Mail className="w-5 h-5 mr-2" />
+                  Email Us
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                </button>
+                
+                <a
+                  href="https://wa.me/8801976927587?text=Hi! I'd like to start my Pinterest marketing journey. Can you help me get started?"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center group"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Chat on WhatsApp
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                </a>
+              </div>
+              
+              <div className="mt-6 p-4 bg-red-50 rounded-xl">
+                <h4 className="font-semibold text-gray-900 mb-2">Free Pinterest Audit Included</h4>
+                <p className="text-gray-600 text-sm">
+                  Get a comprehensive analysis of your current Pinterest performance and actionable recommendations for improvement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Ready to Grow Your Pinterest Presence?
@@ -77,8 +125,8 @@ export const GeneralContact: React.FC = () => {
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl order-1 lg:order-2">
+          {/* CTA Section - Desktop Only */}
+          <div className="bg-white p-8 rounded-2xl shadow-xl order-1 lg:order-2 hidden lg:block">
             <div className="text-center">
               <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Mail className="w-8 h-8 text-red-600" />
