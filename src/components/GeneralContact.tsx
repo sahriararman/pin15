@@ -4,7 +4,7 @@ import { Phone, Mail, Clock, MapPin, ArrowRight, MessageCircle } from 'lucide-re
 export const GeneralContact: React.FC = () => {
   const handleContactClick = () => {
     // You can customize this action - email, phone, or external form
-    window.location.href = 'mailto:hello@pinterestmarketing.pro?subject=Pinterest Marketing Inquiry';
+    window.location.href = 'mailto:contact@hello.pinclimb.com?subject=Pinterest Marketing Inquiry';
   };
 
   return (
@@ -27,16 +27,18 @@ export const GeneralContact: React.FC = () => {
             
             <div className="space-y-6">
               <div className="flex items-start">
-                <Phone className="w-6 h-6 text-red-600 mr-4 mt-1 flex-shrink-0" />
+                <MessageCircle className="w-6 h-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
                 <div>
-                  <div className="font-semibold text-gray-900">Phone</div>
+                  <div className="font-semibold text-gray-900">WhatsApp</div>
                   <a 
-                    href="tel:8005557468"
-                    className="text-gray-600 hover:text-red-600 transition-colors duration-200"
+                    href="https://wa.me/8801976927587"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-green-500 transition-colors duration-200"
                   >
-                    (800) 555-PINTEREST
+                    +8801976927587
                   </a>
-                  <div className="text-sm text-gray-500">Mon-Fri 9AM-6PM EST</div>
+                  <div className="text-sm text-gray-500">Available 24/7</div>
                 </div>
               </div>
               
@@ -45,10 +47,10 @@ export const GeneralContact: React.FC = () => {
                 <div>
                   <div className="font-semibold text-gray-900">Email</div>
                   <a 
-                    href="mailto:hello@pinterestmarketing.pro"
+                    href="mailto:contact@hello.pinclimb.com"
                     className="text-gray-600 hover:text-red-600 transition-colors duration-200"
                   >
-                    hello@pinterestmarketing.pro
+                    contact@hello.pinclimb.com
                   </a>
                   <div className="text-sm text-gray-500">We respond within 2 hours</div>
                 </div>
@@ -101,7 +103,7 @@ export const GeneralContact: React.FC = () => {
                 </button>
                 
                 <a
-                  href="https://wa.me/18005557468?text=Hi! I'd like to start my Pinterest marketing journey. Can you help me get started?"
+                  href="https://wa.me/8801976927587?text=Hi! I'd like to start my Pinterest marketing journey. Can you help me get started?"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 text-white py-4 px-6 rounded-full font-semibold hover:bg-green-600 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center group"
@@ -132,7 +134,7 @@ export const GeneralContact: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/18005557468?text=Hi! I'm interested in Pinterest marketing services. Can you help me get started?"
+              href="https://wa.me/8801976927587?text=Hi! I'm interested in Pinterest marketing services. Can you help me get started?"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-green-600 transition-colors duration-200 flex items-center justify-center"
