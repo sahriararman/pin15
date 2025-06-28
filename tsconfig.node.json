@@ -4,8 +4,6 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* Bundler and Node.js mode */
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "isolatedModules": false,
@@ -14,8 +12,6 @@
     "outDir": "dist/api",
     "rootDir": "api",
     "types": ["@vercel/node"],
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
