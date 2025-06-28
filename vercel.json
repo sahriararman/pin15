@@ -1,8 +1,7 @@
 {
   "functions": {
     "api/**/*.ts": {
-      "runtime": "nodejs@20.x",
-      "includeFiles": ["dist/api/**/*"]
+      "runtime": "nodejs@20.x"
     }
   },
   "rewrites": [
@@ -16,8 +15,7 @@
       "src": "api/**/*.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["api/**/*"],
-        "distDir": "dist/api"
+        "includeFiles": ["api/**/*"]
       }
     }
   ]
