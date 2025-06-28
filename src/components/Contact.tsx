@@ -13,32 +13,51 @@ export const Contact: React.FC<ContactProps> = ({ location }) => {
     phone: '',
     company: '',
     message: '',
-    honeypot: '' // Hidden field for spam protection
+    honeypot: '', // Hidden field for spam protection
   });
+  const [status, setStatus] = useState(''); // Add state for feedback
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setStatus('Sending...');
+
     // Check honeypot field - if filled, it's likely a bot
     if (formData.honeypot) {
+      setStatus('Potential spam detected.');
       console.log('Potential spam detected - honeypot field was filled');
-      return; // Don't process the form
+      return;
     }
-    
-    // Handle legitimate form submission
-    console.log('Form submitted:', {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      company: formData.company,
-      message: formData.message
-    });
+
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message,
+        }),
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        setStatus('Message sent successfully!');
+        setFormData({ name: '', email: '', phone: '', company: '', message: '', honeypot: '' });
+      } else {
+        setStatus(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      setStatus('Error: Failed to send message.');
+      console.error('Submission error:', error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -218,6 +237,7 @@ export const Contact: React.FC<ContactProps> = ({ location }) => {
                   Send Message
                 </button>
               </div>
+              {status && <p className="mt-4 text-center text-gray-600">{status}</p>} {/* Display status */}
             </form>
           </div>
         </div>
