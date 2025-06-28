@@ -22,7 +22,7 @@ export const GeneralContact: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Contact Info Section */}
-          <div>
+          <div className="order-2 lg:order-1">
             <h3 className="text-2xl font-bold text-gray-900 mb-8">Get in Touch</h3>
             
             <div className="space-y-6">
@@ -78,7 +78,7 @@ export const GeneralContact: React.FC = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl">
+          <div className="bg-white p-8 rounded-2xl shadow-xl order-1 lg:order-2">
             <div className="text-center">
               <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Mail className="w-8 h-8 text-red-600" />
@@ -124,33 +124,7 @@ export const GeneralContact: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom CTA Strip */}
-        <div className="mt-16 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-2xl font-bold mb-2">
-            Questions? We're Here to Help!
-          </h3>
-          <p className="text-red-100 mb-6">
-            Our Pinterest marketing experts are standing by to discuss your goals and create a custom strategy for your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://wa.me/8801976927587?text=Hi! I'm interested in Pinterest marketing services. Can you help me get started?"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-green-600 transition-colors duration-200 flex items-center justify-center"
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Chat on WhatsApp
-            </a>
-            <button
-              onClick={handleContactClick}
-              className="bg-white text-red-600 py-3 px-6 rounded-full font-semibold hover:bg-red-50 transition-colors duration-200 flex items-center justify-center"
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Send Email
-            </button>
-          </div>
-        </div>
+
       </div>
     </section>
   );
